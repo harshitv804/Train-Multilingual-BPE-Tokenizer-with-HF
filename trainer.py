@@ -1,16 +1,7 @@
 import unicodedata
 import config
-from pathlib import Path
-from tokenizers import (
-    Tokenizer,
-    Regex,
-    decoders,
-    normalizers,
-    pre_tokenizers,
-    trainers,
-)
+from tokenizers import Tokenizer, Regex, decoders, normalizers, pre_tokenizers, trainers
 from tokenizers.models import BPE
-from tokenizers.pre_tokenizers import Split
 
 def get_corpus_files():
     if not config.CORPUS_DIR.exists():
@@ -59,15 +50,15 @@ def create_tokenizer():
 
     tokenizer.pre_tokenizer = pre_tokenizers.Sequence(
         [
-            Split(
+            pre_tokenizers.Split(
                 pattern=Regex(r"\p{N}{1,3}"),
                 behavior="isolated",
             ),
-            Split(
+            pre_tokenizers.Split(
                 pattern=Regex(r"[一-龥぀-ゟ゠-ヿ]+"),
                 behavior="isolated",
             ),
-            Split(
+            pre_tokenizers.Split(
                 pattern=Regex(
                     r"""[!"#$%&'()*+,\-./:;<=>?@\[\\\]^_`{|}~][A-Za-z]+"""
                     r"""|[^\r\n\p{L}\p{P}\p{S}]?[\p{L}\p{M}]+"""
