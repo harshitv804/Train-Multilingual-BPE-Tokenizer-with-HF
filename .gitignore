@@ -1,0 +1,13 @@
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+output/
+tokenizer.json
+
+.ipynb_checkpoints/
+
+.DS_Store
+
+corpus/
