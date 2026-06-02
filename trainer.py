@@ -61,7 +61,7 @@ def create_tokenizer():
             pre_tokenizers.Split(
                 pattern=Regex(
                     r"""[!"#$%&'()*+,\-./:;<=>?@\[\\\]^_`{|}~][A-Za-z]+"""
-                    r"""|[^\r\n\p{L}\p{P}\p{S}]?[\p{L}\p{M}]+"""
+                    r"""|[^\r\n\p{L}\p{P}\p{S}]?[\p{L}\p{M}]+[\p{P}\p{S}]*"""
                     r"""| ?[\p{P}\p{S}]+[\r\n]*"""
                     r"""|\s*[\r\n]+"""
                     r"""|\s+(?!\S)"""
@@ -71,7 +71,7 @@ def create_tokenizer():
             ),
             pre_tokenizers.Metaspace(
                 replacement=config.METASPACE_CHAR,
-                prepend_scheme="always",
+                prepend_scheme="first",
             ),
             pre_tokenizers.Digits(
                 individual_digits=False,
@@ -84,7 +84,7 @@ def create_tokenizer():
             decoders.ByteFallback(),
             decoders.Metaspace(
                 replacement=config.METASPACE_CHAR,
-                prepend_scheme="always",
+                prepend_scheme="first",
             ),
         ]
     )
