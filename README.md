@@ -49,8 +49,8 @@ A multilingual **Character-Level BPE Tokenizer** built using the Hugging Face To
 ### 1️⃣ Clone the Repository
 
 ```bash
-git clone https://github.com/harshitv804/Train-Multilingual-Character-Level-BPE-Tokenizer-with-HuggingFace.git
-cd Train-Multilingual-Character-Level-BPE-Tokenizer-with-HuggingFace
+git clone https://github.com/harshitv804/Train-Multilingual-BPE-Tokenizer-with-HF.git
+cd Train-Multilingual-BPE-Tokenizer-with-HF
 ```
 
 ### 2️⃣ Configure Training Parameters
