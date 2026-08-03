@@ -1,56 +1,28 @@
-# 🌍 Train Multilingual Character-Level BPE Tokenizer with Hugging Face
+# Train Multilingual Unicode BPE Tokenizer with Hugging Face
 
-A multilingual **Character-Level BPE Tokenizer** built using the Hugging Face Tokenizers library, trained on **Tamil** and **English** text with a vocabulary size of **64,000 tokens**.
+A multilingual **Unicode-Level BPE Tokenizer** based on DeekseekV4 Regex built using the Hugging Face Tokenizers library.
 
-## ✨ Features
+## Training Config:
 
-### 🔤 Character-Level BPE
-- Uses a **Character-Level Byte Pair Encoding (BPE)** tokenizer.
-- Starts from individual characters and learns merge rules during training.
+| | |
+| ------------------------- | ---------------------------------- |
+| **Dataset**               | `ai4bharat/IndicCorpV2`
+| **Corpus Size**           | `18GB`
+| **Languages**             | `ta`, `en`, `te`, `ml`, `hi`, `kn` |
+| **Vocabulary Size**       | `64000`                            |
+| **Pre-tokenization**      | Regex-based (DeepSeek V4 style)    |
+| **Byte Fallback Support** | Yes                                |
+| **RAM Consumed**          | `40 GB`                            |
 
-### 🌐 Multilingual Training
-- Trained on both:
-  - 🇮🇳 Tamil
-  - 🇬🇧 English
-- Designed to handle mixed-language content effectively.
+## Training the Tokenizer:
 
-### 📚 64K Vocabulary
-- Vocabulary size: **64,000 tokens**
-- Provides a balance between compression efficiency and vocabulary coverage.
-
-### 🧹 Regex-Based Preprocessing
-- Includes custom **regex pre-tokenization** inspired by approaches used in:
-  - DeepSeek models
-  - GPT-family tokenizers
-- Improves handling of:
-  - Words
-  - Numbers
-  - Punctuation
-  - Special symbols
-
-### ▁ Metaspace Processing
-- Uses **Metaspace (`▁`)** preprocessing similar to SentencePiece.
-- Explicitly represents whitespace during tokenization.
-- Automatically restores spaces during decoding.
-
-### 🛡️ Byte Fallback Support
-- Supports **Byte Fallback** for unseen or out-of-vocabulary characters.
-- Ensures any Unicode text can be tokenized without producing unknown tokens.
-
-### 🔠 Unicode-Based Initial Vocabulary
-- Initializes training with:
-  - All Tamil Unicode characters
-  - All English characters
-- Helps preserve important characters from the start of training.
-- Leads to more meaningful and stable BPE merge rules.
-
-## 🚀 Training the Tokenizer
-
-### 1️⃣ Clone the Repository
+### 1️⃣ Clone the Repo & Install `requirements.txt`
 
 ```bash
 git clone https://github.com/harshitv804/Train-Multilingual-BPE-Tokenizer-with-HF.git
 cd Train-Multilingual-BPE-Tokenizer-with-HF
+
+pip install -r requirements.txt
 ```
 
 ### 2️⃣ Configure Training Parameters
@@ -93,13 +65,13 @@ After training completes, the tokenizer will be saved automatically to:
 output/tokenizer.json
 ```
 
-## 📂 Example Directory Structure
+## Example Directory Structure
 
 ```text
 project/
 ├── corpus/
-│   ├── tamil.txt
-│   ├── english.txt
+│   ├── ta.txt
+│   ├── en.txt
 │   └── mixed.txt
 ├── output/
 │   └── tokenizer.json
@@ -107,5 +79,8 @@ project/
 ├── trainer.py
 └── README.md
 ```
+
+## Fertility Score:
+![](assests/fertility_score.png)
 
 > 🤖 AI-assisted README.
