@@ -81,6 +81,6 @@ project/
 ```
 
 ## Fertility Score:
-![](assests/fertility_score.png)
+![](assets/fertility_score.png)
 
 > 🤖 AI-assisted README.
